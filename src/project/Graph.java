@@ -117,4 +117,6 @@ public interface Graph {
     public static Graph makeGraphFromMatrixFile(Path path, IntFunction<Graph> factory) throws IOException {
         return null; // TODO à implémenter
     }
+
+    public Graph newGraphOfSameSize();
 }
