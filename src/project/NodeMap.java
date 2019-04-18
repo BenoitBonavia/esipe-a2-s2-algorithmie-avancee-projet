@@ -17,7 +17,7 @@ public class NodeMap {
 
         long diffX2 = (coordP2.getX() - coordP1.getX())*(coordP2.getX() - coordP1.getX());
         long diffY2 = (coordP2.getY() - coordP1.getY())*(coordP2.getY() - coordP1.getY());
-        
+
         return Math.sqrt(diffX2 + diffY2);
     }
 
