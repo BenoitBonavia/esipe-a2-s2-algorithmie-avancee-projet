@@ -14,7 +14,11 @@ public class NodeMap {
     public double distance(int point1, int point2) {
         Coordonate coordP1 = nodes.get(point1);
         Coordonate coordP2 = nodes.get(point2);
-        return Math.sqrt((coordP2.getX() - coordP1.getX())*(coordP2.getX() - coordP1.getX()) + (coordP2.getY() - coordP1.getY())*(coordP2.getY() - coordP1.getY()));
+
+        long diffX2 = (coordP2.getX() - coordP1.getX())*(coordP2.getX() - coordP1.getX());
+        long diffY2 = (coordP2.getY() - coordP1.getY())*(coordP2.getY() - coordP1.getY());
+        
+        return Math.sqrt(diffX2 + diffY2);
     }
 
     @Override
