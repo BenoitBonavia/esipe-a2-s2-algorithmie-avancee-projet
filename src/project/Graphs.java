@@ -7,17 +7,15 @@ import java.util.List;
 import java.util.concurrent.atomic.LongAdder;
 
 public class Graphs {
-    public static int astar(Graph graph, int s, int t) {
+    public static int astar(Graph graph, int s, int t, int[] h) {
         if(s < 0 || s>=graph.numberOfVertices() || t < 0 || t>=graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
         int[] f = new int[graph.numberOfVertices()];
         int[] g = new int[graph.numberOfVertices()];
-        int[] h = new int[graph.numberOfVertices()];
         for (int i = 0; i < f.length; i++) {
             f[i] = Integer.MAX_VALUE;
             g[i] = Integer.MAX_VALUE;
-            h[i] = 0;
         }
         f[s] = 0;
         g[s] = 0;
