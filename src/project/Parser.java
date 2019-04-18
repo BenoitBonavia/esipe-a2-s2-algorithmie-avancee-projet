@@ -1,11 +1,11 @@
 package project;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 public class Parser {
@@ -20,14 +20,21 @@ public class Parser {
             while ((line = reader.readLine()) != null) {
                 String[] tab = line.split(" ");
                 String type = tab[0];
-                if (type.equals("p")) {
+                if (type.equals("c")) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String s: tab) {
+                        sb.append(s);
+                    }
+                    logger.info(sb.toString());
+                }
+                else if (type.equals("p")) {
                     String sp = tab[1];
                     if (sp.equals("sp")) {
                         int numberVertices = Integer.parseInt(tab[2]) + 1;
                         graph = new AdjGraph(numberVertices);
                     }
                 }
-                if (type.equals("a")) {
+                else if (type.equals("a")) {
                     if (graph != null) {
                         int i = Integer.parseInt(tab[1]);
                         int j = Integer.parseInt(tab[2]);
@@ -42,7 +49,31 @@ public class Parser {
             }
             return graph;
         } catch (IOException e) {
-            throw new IllegalStateException("Impossible to readFile");
+            throw new IllegalStateException("Impossible to readFile .gr");
+        }
+    }
+
+    public static List<Node> parseToCities(String filename) {
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get("res/" + filename + ".co"))) {
+            String line;
+            List<Node> cities = new ArrayList<>();
+            while ((line = reader.readLine()) != null) {
+                String[] tab = line.split(" ");
+                String type = tab[0];
+                if (type.equals("c")) {
+                    StringBuilder sb = new StringBuilder();
+                    for (String s: tab) {
+                        sb.append(s);
+                    }
+                    logger.info(sb.toString());
+                }
+                else if (type.equals("v")) {
+                    cities.add(new Node(Integer.parseInt(tab[1]), Integer.parseInt(tab[2]), Integer.parseInt(tab[3])));
+                }
+            }
+            return cities;
+        } catch (IOException e) {
+            throw new IllegalStateException("Impossible to readFile .co");
         }
     }
 }
