@@ -10,7 +10,7 @@ public class Main {
 //            graph.forEachEdge(i, System.out::println);
 //        }
 
-        List<Node> cities = Parser.parseToCities(args[0]);
-        System.out.println(cities);
+        NodeMap nodeMap = Parser.parseToCities(args[0]);
+        System.out.println(nodeMap);
     }
 }

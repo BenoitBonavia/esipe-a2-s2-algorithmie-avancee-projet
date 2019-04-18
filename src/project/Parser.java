@@ -53,10 +53,10 @@ public class Parser {
         }
     }
 
-    public static List<Node> parseToCities(String filename) {
+    public static NodeMap parseToCities(String filename) {
         try (BufferedReader reader = Files.newBufferedReader(Paths.get("res/" + filename + ".co"))) {
             String line;
-            List<Node> cities = new ArrayList<>();
+            NodeMap nodeMap = new NodeMap();
             while ((line = reader.readLine()) != null) {
                 String[] tab = line.split(" ");
                 String type = tab[0];
@@ -68,10 +68,10 @@ public class Parser {
                     logger.info(sb.toString());
                 }
                 else if (type.equals("v")) {
-                    cities.add(new Node(Integer.parseInt(tab[1]), Integer.parseInt(tab[2]), Integer.parseInt(tab[3])));
+                    nodeMap.addNode(Integer.parseInt(tab[1]), new Coordonate(Integer.parseInt(tab[2]), Integer.parseInt(tab[3])));
                 }
             }
-            return cities;
+            return nodeMap;
         } catch (IOException e) {
             throw new IllegalStateException("Impossible to readFile .co");
         }
