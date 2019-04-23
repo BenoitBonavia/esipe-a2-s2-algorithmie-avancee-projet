@@ -12,7 +12,7 @@ public class AdjGraph implements Graph {
         this.n = n;
         this.numberOfEdges = 0;
         this.adj = new ArrayList<>();
-        for(int i = 0; i<n; i++) {
+        for (int i = 0; i < n; i++) {
             this.adj.add(new LinkedList<>());
         }
     }
@@ -30,7 +30,7 @@ public class AdjGraph implements Graph {
     @Override
     public void addEdge(int i, int j, int value) {
         Optional<Edge> optEdge = adj.get(i).stream().filter(edge -> edge.getStart() == i && edge.getEnd() == j).findFirst();
-        if(optEdge.isPresent()) {
+        if (optEdge.isPresent()) {
             throw new IllegalArgumentException(i + " " + j + " " + value);
         } else {
             adj.get(i).add(new Edge(i, j, value));
@@ -46,7 +46,7 @@ public class AdjGraph implements Graph {
     @Override
     public int getWeight(int i, int j) {
         Optional<Edge> opt = adj.get(i).stream().filter(edge -> edge.getStart() == i && edge.getEnd() == j).findFirst();
-        if(opt.isEmpty()) {
+        if (opt.isEmpty()) {
             throw new ArrayIndexOutOfBoundsException();
         }
         return opt.get().getValue();
@@ -66,5 +66,16 @@ public class AdjGraph implements Graph {
     @Override
     public Graph newGraphOfSameSize() {
         return new AdjGraph(n);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stb = new StringBuilder();
+        for (int i = 0; i < numberOfVertices(); i++) {
+            stb.append(i);
+            forEachEdge(i, edge -> stb.append("\n -").append(edge.getValue()).append("-> ").append(edge.getEnd()));
+            stb.append("\n");
+        }
+        return stb.toString();
     }
 }
