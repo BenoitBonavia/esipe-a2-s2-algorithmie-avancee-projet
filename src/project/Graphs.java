@@ -1,14 +1,15 @@
 package project;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.LongAdder;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Graphs {
+    private static Logger logger = Logger.getLogger(Graphs.class.getName());
+
     public static int astar(Graph graph, int s, int t, int[] h) {
-        if(s < 0 || s>=graph.numberOfVertices() || t < 0 || t>=graph.numberOfVertices()) {
+        if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
         int[] f = new int[graph.numberOfVertices()];
@@ -62,6 +63,54 @@ public class Graphs {
             }
         }
         return -1;
+    }
+
+    public static int[] getH(int numberOfVertices, int source, NodeMap nodeMap) {
+        int[] h = new int[numberOfVertices];
+        for (int i = 1; i < numberOfVertices; i++) {
+            try {
+                h[i - 1] = (int) Math.ceil(nodeMap.distance(source, i) * 1.6);
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+        }
+        return h;
+    }
+
+    public static ShortestPathFromOneVertex dijkstra(Graph g, int source) {
+        ArrayList<Integer> vertices = new ArrayList<>();
+        int[] d = new int[g.numberOfVertices()];
+        int[] pi = new int[g.numberOfVertices()];
+        for (int i = 0; i < g.numberOfVertices(); i++) {
+            d[i] = Integer.MAX_VALUE;
+            pi[i] = -1;
+        }
+        d[source] = 0;
+        pi[source] = source;
+        vertices.add(source);
+        while (vertices.size() != 0) {
+            int min = Integer.MAX_VALUE;
+            int vertice = -1;
+            for (int i : vertices) {
+                if (d[i] < min) {
+                    vertice = i;
+                    min = d[i];
+                }
+            }
+            if (vertice != -1) {
+                int y = vertice;
+                vertices.remove(vertices.indexOf(vertice));
+                g.forEachEdge(y, edge -> {
+                    if (d[y] + edge.getValue() < d[edge.getEnd()]) {
+                        d[edge.getEnd()] = d[y] + edge.getValue();
+                        pi[edge.getEnd()] = y;
+                        if (!vertices.contains(edge.getEnd()))
+                            vertices.add(edge.getEnd());
+                    }
+                });
+            }
+        }
+        return new ShortestPathFromOneVertex(source, d, pi);
     }
 
 }
