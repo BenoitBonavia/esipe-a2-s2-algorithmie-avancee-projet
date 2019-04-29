@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 public class Parser {
@@ -20,31 +18,33 @@ public class Parser {
             while ((line = reader.readLine()) != null) {
                 String[] tab = line.split(" ");
                 String type = tab[0];
-                if (type.equals("c")) {
-                    StringBuilder sb = new StringBuilder();
-                    for (String s: tab) {
-                        sb.append(s);
-                    }
-                    logger.info(sb.toString());
-                }
-                else if (type.equals("p")) {
-                    String sp = tab[1];
-                    if (sp.equals("sp")) {
-                        int numberVertices = Integer.parseInt(tab[2]) + 1;
-                        graph = new AdjGraph(numberVertices);
-                    }
-                }
-                else if (type.equals("a")) {
-                    if (graph != null) {
-                        int i = Integer.parseInt(tab[1]);
-                        int j = Integer.parseInt(tab[2]);
-                        int value = Integer.parseInt(tab[3]);
-                        try {
-                            graph.addEdge(i, j, value);
-                        } catch(IllegalArgumentException e) {
-                            logger.info("There is a double in the edges file");
+                switch (type) {
+                    case "c":
+                        StringBuilder sb = new StringBuilder();
+                        for (String s : tab) {
+                            sb.append(s);
                         }
-                    }
+                        logger.info(sb.toString());
+                        break;
+                    case "p":
+                        String sp = tab[1];
+                        if (sp.equals("sp")) {
+                            int numberVertices = Integer.parseInt(tab[2]) + 1;
+                            graph = new AdjGraph(numberVertices);
+                        }
+                        break;
+                    case "a":
+                        if (graph != null) {
+                            int i = Integer.parseInt(tab[1]);
+                            int j = Integer.parseInt(tab[2]);
+                            int value = Integer.parseInt(tab[3]);
+                            try {
+                                graph.addEdge(i, j, value);
+                            } catch (IllegalArgumentException e) {
+                                logger.info("There is a double in the edges file");
+                            }
+                        }
+                        break;
                 }
             }
             return graph;
@@ -62,13 +62,12 @@ public class Parser {
                 String type = tab[0];
                 if (type.equals("c")) {
                     StringBuilder sb = new StringBuilder();
-                    for (String s: tab) {
+                    for (String s : tab) {
                         sb.append(s);
                     }
                     logger.info(sb.toString());
-                }
-                else if (type.equals("v")) {
-                    nodeMap.addNode(Integer.parseInt(tab[1]), new Coordonate(Integer.parseInt(tab[2]), Integer.parseInt(tab[3])));
+                } else if (type.equals("v")) {
+                    nodeMap.addNode(Integer.parseInt(tab[1]), new Coordinate(Integer.parseInt(tab[2]), Integer.parseInt(tab[3])));
                 }
             }
             return nodeMap;
