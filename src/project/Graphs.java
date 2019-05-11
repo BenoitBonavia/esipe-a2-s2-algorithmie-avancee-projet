@@ -1,11 +1,7 @@
 package project;
 
-import jdk.swing.interop.SwingInterOpUtils;
-
 import java.util.*;
-import java.util.concurrent.atomic.LongAdder;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class Graphs {
     private static Logger logger = Logger.getLogger(Graphs.class.getName());
@@ -104,7 +100,7 @@ public class Graphs {
             }
             if (vertice != -1) {
                 int y = vertice;
-                vertices.remove(vertices.indexOf(vertice));
+                vertices.remove(vertices.indexOf(vertice)); // obligatoire d'utiliser indexOf, vertice étant un int, sans préciser indexOf, remove appelerait avec vertice comme une position
                 g.forEachEdge(y, edge -> {
                     if (d[y] + edge.getValue() < d[edge.getEnd()]) {
                         d[edge.getEnd()] = d[y] + edge.getValue();

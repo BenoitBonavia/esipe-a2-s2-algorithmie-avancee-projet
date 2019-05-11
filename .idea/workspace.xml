@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="187066b0-70aa-4ff5-93df-d04864ecc3f3" name="Default Changelist" comment="Astar without bugs. Dijkstra is added with ShortestPathFromOneVertex. Tests for parser and astar. Dijkstra need to be completed.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Graphs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Graphs.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,8 +17,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/project/Graphs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="116" column="9" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+            <state relative-caret-position="125">
+              <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -198,6 +202,11 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="esipe-a2-s2-algorithmie-avancee-projet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="esipe-a2-s2-algorithmie-avancee-projet" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -213,7 +222,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557594519122" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557594657347" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -385,12 +394,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GraphsTest - 2019.05.11 at 18h 46m 03s.xml">
-      <configuration name="GraphsTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphsTest - 2019.05.11 at 18h 46m 53s.xml">
-      <configuration name="GraphsTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GraphsTest - 2019.05.11 at 18h 47m 49s.xml">
       <configuration name="GraphsTest" configurationId="JUnit" />
     </history-entry>
@@ -415,9 +418,15 @@
     <history-entry file="GraphsTest - 2019.05.11 at 19h 05m 55s.xml">
       <configuration name="GraphsTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GraphsTest - 2019.05.11 at 19h 09m 22s.xml">
+      <configuration name="GraphsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphsTest - 2019.05.11 at 19h 09m 32s.xml">
+      <configuration name="GraphsTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32519000" />
+    <option name="totallyTimeSpent" value="32657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -701,8 +710,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/project/Graphs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="116" column="9" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+        <state relative-caret-position="125">
+          <caret line="96" column="32" lean-forward="true" selection-start-line="96" selection-start-column="32" selection-end-line="96" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
