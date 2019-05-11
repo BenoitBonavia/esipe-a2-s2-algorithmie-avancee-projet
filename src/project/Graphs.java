@@ -38,10 +38,6 @@ public class Graphs {
                 }
             }
             if (x == t) {
-                System.out.println("===============================================================================================");
-                System.out.println(Arrays.toString(g));
-                System.out.println(Arrays.toString(f));
-                System.out.println(Arrays.toString(pi));
                 return new ShortestPathFromOneVertex(s, g, pi);
             }
             if (x != -1) {
@@ -119,8 +115,6 @@ public class Graphs {
                 });
             }
         }
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println(new ShortestPathFromOneVertex(source, d, pi));
         return new ShortestPathFromOneVertex(source, d, pi);
     }
 
