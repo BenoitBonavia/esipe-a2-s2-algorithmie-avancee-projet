@@ -1,19 +1,18 @@
 package project;
 
 import java.util.*;
-import java.util.concurrent.atomic.LongAdder;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 public class Graphs {
     private static Logger logger = Logger.getLogger(Graphs.class.getName());
 
-    public static int astar(Graph graph, int s, int t, int[] h) {
+    public static ShortestPathFromOneVertex astar(Graph graph, int s, int t, int[] h) {
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
         int[] f = new int[graph.numberOfVertices()];
         int[] g = new int[graph.numberOfVertices()];
+        int[] pi = new int[graph.numberOfVertices()];
         for (int i = 0; i < f.length; i++) {
             f[i] = Integer.MAX_VALUE;
             g[i] = Integer.MAX_VALUE;
@@ -24,7 +23,7 @@ public class Graphs {
         ArrayList<Integer> computed = new ArrayList<>();
         border.add(s);
         computed.add(s);
-        while (!border.isEmpty()) {
+        while (!border.isEmpty()) { // tant qu'il y a des points a
             int min = Integer.MAX_VALUE;
             int x = -1;
             //Extrait le min de border
@@ -35,7 +34,7 @@ public class Graphs {
                 }
             }
             if (x == t) {
-                return f[x];
+                return new ShortestPathFromOneVertex(s, g, pi);
             }
             if (x != -1) {
                 //Enleve x de border
@@ -48,6 +47,7 @@ public class Graphs {
                         if (g[y] > g[fx] + value) {
                             g[y] = g[fx] + value;
                             f[y] = g[y] + h[y];
+                            pi[y] = fx;
                             if (!border.contains(y)) {
                                 border.add(y);
                             }
@@ -56,13 +56,14 @@ public class Graphs {
                         int value = edge.getValue();
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
+                        pi[y] = fx;
                         border.add(y);
                         computed.add(y);
                     }
                 });
             }
         }
-        return -1;
+        return null;
     }
 
     public static int[] getH(int numberOfVertices, int source, NodeMap nodeMap) {
@@ -99,13 +100,14 @@ public class Graphs {
             }
             if (vertice != -1) {
                 int y = vertice;
-                vertices.remove(vertices.indexOf(vertice));
+                vertices.remove(vertices.indexOf(vertice)); // obligatoire d'utiliser indexOf, vertice étant un int, sans préciser indexOf, remove appelerait avec vertice comme une position
                 g.forEachEdge(y, edge -> {
-                    if (d[y] + edge.getValue() < d[edge.getEnd()]) {
-                        d[edge.getEnd()] = d[y] + edge.getValue();
-                        pi[edge.getEnd()] = y;
-                        if (!vertices.contains(edge.getEnd()))
-                            vertices.add(edge.getEnd());
+                    int end = edge.getEnd();
+                    if (d[y] + edge.getValue() < d[end]) {
+                        d[end] = d[y] + edge.getValue();
+                        pi[end] = y;
+                        if (!vertices.contains(end))
+                            vertices.add(end);
                     }
                 });
             }
