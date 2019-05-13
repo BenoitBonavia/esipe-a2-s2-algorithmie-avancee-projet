@@ -102,11 +102,12 @@ public class Graphs {
                 int y = vertice;
                 vertices.remove(vertices.indexOf(vertice)); // obligatoire d'utiliser indexOf, vertice étant un int, sans préciser indexOf, remove appelerait avec vertice comme une position
                 g.forEachEdge(y, edge -> {
-                    if (d[y] + edge.getValue() < d[edge.getEnd()]) {
-                        d[edge.getEnd()] = d[y] + edge.getValue();
-                        pi[edge.getEnd()] = y;
-                        if (!vertices.contains(edge.getEnd()))
-                            vertices.add(edge.getEnd());
+                    int end = edge.getEnd();
+                    if (d[y] + edge.getValue() < d[end]) {
+                        d[end] = d[y] + edge.getValue();
+                        pi[end] = y;
+                        if (!vertices.contains(end))
+                            vertices.add(end);
                     }
                 });
             }
