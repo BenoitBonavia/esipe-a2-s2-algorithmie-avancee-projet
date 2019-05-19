@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 public class Graphs {
     private static Logger logger = Logger.getLogger(Graphs.class.getName());
 
-    public static ShortestPathFromOneVertex astar(Graph graph, int s, int t, int[] h) {
+    public static Optional<ShortestPathFromOneVertex> astar(Graph graph, int s, int t, int[] h) {
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
@@ -34,7 +34,7 @@ public class Graphs {
                 }
             }
             if (x == t) {
-                return new ShortestPathFromOneVertex(s, g, pi);
+                return Optional.of(new ShortestPathFromOneVertex(s, g, pi));
             }
             if (x != -1) {
                 //Enleve x de border
@@ -63,7 +63,7 @@ public class Graphs {
                 });
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public static int[] getH(int numberOfVertices, int source, NodeMap nodeMap) {

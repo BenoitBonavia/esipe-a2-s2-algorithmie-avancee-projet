@@ -3,6 +3,7 @@ package project;
 import org.junit.jupiter.api.Test;
 import project.*;
 
+import java.util.Iterator;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -103,11 +104,35 @@ class GraphsTest {
         graph.addEdge(3, 2, 1);
         graph.addEdge(0, 4, 6);
         ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(graph, 0);
-        dijkstra.printShortestPaths();
+        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, 0, 4, createH(graph));
+        dijkstra.printShortestPathTo(3);
+        astar.get().printShortestPathTo(3);
+        /*
+        assertEquals(dijkstra, astar);*/
+    }
+
+    @Test
+    void astarSameAsDijkstra() {
+
     }
     @Test
     void sameResultWithDijkstraAndAstar() {
         //TODO : TEST
+    }
+
+    @Test
+    public void randomGraph() {
+        Graph graph = Graph.makeRandomGraph(5, 4, 9, n -> new AdjGraph(5));
+        assertEquals(graph.numberOfEdges(), 4);
+        assertEquals(graph.numberOfVertices(), 5);
+        for (int i = 0; i < 5; i++) {
+            Iterator<Edge> edgeIterator = graph.edgeIterator(i);
+            while (edgeIterator.hasNext()) {
+                Edge next = edgeIterator.next();
+                assertTrue(next.getValue() < 9);
+            }
+        }
+        System.out.println(graph);
     }
 
 }
