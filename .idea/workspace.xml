@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="187066b0-70aa-4ff5-93df-d04864ecc3f3" name="Default Changelist" comment="File de priorité.">
-      <change afterPath="$PROJECT_DIR$/src/project/Node.java" afterDir="false" />
+    <list default="true" id="187066b0-70aa-4ff5-93df-d04864ecc3f3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/project/Graphs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Graphs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/project/GraphsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/project/GraphsTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -18,46 +17,34 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/project/Graphs.java">
+        <entry file="file://$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/project/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+            <state relative-caret-position="145">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#172#173#0" expanded="true" />
-                <element signature="e#201#202#0" expanded="true" />
-                <element signature="e#233#234#0" expanded="true" />
-                <element signature="e#264#265#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
-                <element signature="e#1136#1137#0" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#488#489#0" expanded="true" />
+                <element signature="e#1988#1989#0" expanded="true" />
+                <element signature="e#2072#2073#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/project/Edge.java">
+        <entry file="file://$PROJECT_DIR$/src/project/Graphs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="49" column="38" selection-start-line="49" selection-start-column="38" selection-end-line="49" selection-end-column="38" />
+            <state relative-caret-position="185">
+              <caret line="29" column="73" lean-forward="true" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/project/GraphsTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+            <state relative-caret-position="1110">
+              <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -77,20 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/project/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/USA-road-d.W.co">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="691515">
-              <caret line="46101" column="27" selection-start-line="46101" selection-start-column="27" selection-end-line="46101" selection-end-column="27" />
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -159,6 +137,12 @@
       <find>H</find>
       <find>n-&gt;</find>
       <find>astar</find>
+      <find>test</find>
+      <find>234</find>
+      <find>Di</find>
+      <find>dij</find>
+      <find>princ</find>
+      <find>printSh</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -186,12 +170,12 @@
         <option value="$PROJECT_DIR$/src/project/AdjGraph.java" />
         <option value="$PROJECT_DIR$/src/project/Graph.java" />
         <option value="$PROJECT_DIR$/src/project/test/GraphsTest.java" />
-        <option value="$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java" />
         <option value="$PROJECT_DIR$/src/project/Parser.java" />
         <option value="$PROJECT_DIR$/src/project/Node.java" />
-        <option value="$PROJECT_DIR$/test/project/GraphsTest.java" />
-        <option value="$PROJECT_DIR$/src/project/Graphs.java" />
         <option value="$PROJECT_DIR$/src/project/Main.java" />
+        <option value="$PROJECT_DIR$/src/project/Graphs.java" />
+        <option value="$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java" />
+        <option value="$PROJECT_DIR$/test/project/GraphsTest.java" />
       </list>
     </option>
   </component>
@@ -260,7 +244,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558793824899" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558796834542" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -290,17 +274,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GraphsTest.astarOnGraphFromFile">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="project.Main" />
+  <component name="RunManager" selected="JUnit.GraphsTest.dijkstra">
+    <configuration name="GraphsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="esipe-a2-s2-algorithmie-avancee-projet" />
-      <option name="PROGRAM_PARAMETERS" value="USA-road-d.W" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="project.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="project" />
+      <option name="MAIN_CLASS_NAME" value="project.GraphsTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -321,7 +306,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GraphsTest.node" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GraphsTest.astarWithUnreachableTarget" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="esipe-a2-s2-algorithmie-avancee-projet" />
       <extension name="coverage">
         <pattern>
@@ -331,13 +316,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="project" />
       <option name="MAIN_CLASS_NAME" value="project.GraphsTest" />
-      <option name="METHOD_NAME" value="node" />
+      <option name="METHOD_NAME" value="astarWithUnreachableTarget" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GraphsTest.queue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GraphsTest.dijkstra" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="esipe-a2-s2-algorithmie-avancee-projet" />
       <extension name="coverage">
         <pattern>
@@ -347,13 +332,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="project" />
       <option name="MAIN_CLASS_NAME" value="project.GraphsTest" />
-      <option name="METHOD_NAME" value="queue" />
+      <option name="METHOD_NAME" value="dijkstra" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GraphsTest.simpleDijkstra (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GraphsTest.dijkstraOnGraphFromFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="esipe-a2-s2-algorithmie-avancee-projet" />
       <extension name="coverage">
         <pattern>
@@ -363,26 +348,26 @@
       </extension>
       <option name="PACKAGE_NAME" value="project" />
       <option name="MAIN_CLASS_NAME" value="project.GraphsTest" />
-      <option name="METHOD_NAME" value="simpleDijkstra" />
+      <option name="METHOD_NAME" value="dijkstraOnGraphFromFile" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.GraphsTest.simpleDijkstra (1)" />
-      <item itemvalue="JUnit.GraphsTest.queue" />
-      <item itemvalue="JUnit.GraphsTest.node" />
+      <item itemvalue="JUnit.GraphsTest.dijkstraOnGraphFromFile" />
+      <item itemvalue="JUnit.GraphsTest.astarWithUnreachableTarget" />
       <item itemvalue="JUnit.GraphsTest.astarOnGraphFromFile" />
+      <item itemvalue="JUnit.GraphsTest" />
+      <item itemvalue="JUnit.GraphsTest.dijkstra" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GraphsTest.dijkstra" />
+        <item itemvalue="JUnit.GraphsTest" />
+        <item itemvalue="JUnit.GraphsTest.dijkstraOnGraphFromFile" />
         <item itemvalue="JUnit.GraphsTest.astarOnGraphFromFile" />
-        <item itemvalue="JUnit.GraphsTest.node" />
-        <item itemvalue="JUnit.GraphsTest.queue" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.GraphsTest.simpleDijkstra (1)" />
+        <item itemvalue="JUnit.GraphsTest.astarWithUnreachableTarget" />
       </list>
     </recent_temporary>
   </component>
@@ -406,7 +391,7 @@
       <workItem from="1558075446029" duration="158000" />
       <workItem from="1558262533211" duration="653000" />
       <workItem from="1558681649080" duration="2665000" />
-      <workItem from="1558791730516" duration="1896000" />
+      <workItem from="1558791730516" duration="4896000" />
     </task>
     <task id="LOCAL-00001" summary="astart in Graphs. Add the file Graphs.">
       <created>1555578207557</created>
@@ -457,43 +442,50 @@
       <option name="project" value="LOCAL" />
       <updated>1558262804670</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="File de priorité.">
+      <created>1558793832659</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1558793832659</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GraphsTest_simpleDijkstra_(1) - 2019.05.13 at 16h 59m 17s.xml">
-      <configuration name="GraphsTest.simpleDijkstra (1)" configurationId="JUnit" />
+    <history-entry file="GraphsTest_astarOnSimpleGraph - 2019.05.25 at 16h 48m 52s.xml">
+      <configuration name="GraphsTest.astarOnSimpleGraph" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_simpleDijkstra_(1) - 2019.05.13 at 17h 02m 02s.xml">
-      <configuration name="GraphsTest.simpleDijkstra (1)" configurationId="JUnit" />
+    <history-entry file="GraphsTest_astarOnSimpleGraph - 2019.05.25 at 16h 49m 28s.xml">
+      <configuration name="GraphsTest.astarOnSimpleGraph" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_queue - 2019.05.24 at 09h 22m 02s.xml">
-      <configuration name="GraphsTest.queue" configurationId="JUnit" />
+    <history-entry file="GraphsTest_astarOnSimpleGraph - 2019.05.25 at 16h 49m 56s.xml">
+      <configuration name="GraphsTest.astarOnSimpleGraph" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_queue - 2019.05.24 at 09h 23m 15s.xml">
-      <configuration name="GraphsTest.queue" configurationId="JUnit" />
+    <history-entry file="GraphsTest_dijkstraOnGraphFromFile - 2019.05.25 at 16h 52m 12s.xml">
+      <configuration name="GraphsTest.dijkstraOnGraphFromFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_node - 2019.05.25 at 16h 01m 16s.xml">
-      <configuration name="GraphsTest.node" configurationId="JUnit" />
+    <history-entry file="GraphsTest_astarWithUnreachableTarget - 2019.05.25 at 17h 02m 30s.xml">
+      <configuration name="GraphsTest.astarWithUnreachableTarget" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_node - 2019.05.25 at 16h 01m 33s.xml">
-      <configuration name="GraphsTest.node" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphsTest_node - 2019.05.25 at 16h 03m 08s.xml">
-      <configuration name="GraphsTest.node" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GraphsTest_astarOnGraphFromFile - 2019.05.25 at 16h 13m 50s.xml">
+    <history-entry file="GraphsTest_astarOnGraphFromFile - 2019.05.25 at 17h 02m 41s.xml">
       <configuration name="GraphsTest.astarOnGraphFromFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_astarOnGraphFromFile - 2019.05.25 at 16h 14m 34s.xml">
+    <history-entry file="GraphsTest_astarOnGraphFromFile - 2019.05.25 at 17h 04m 03s.xml">
       <configuration name="GraphsTest.astarOnGraphFromFile" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GraphsTest_astarOnGraphFromFile - 2019.05.25 at 16h 14m 57s.xml">
-      <configuration name="GraphsTest.astarOnGraphFromFile" configurationId="JUnit" />
+    <history-entry file="GraphsTest_dijkstraOnGraphFromFile - 2019.05.25 at 17h 05m 18s.xml">
+      <configuration name="GraphsTest.dijkstraOnGraphFromFile" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphsTest - 2019.05.25 at 17h 05m 27s.xml">
+      <configuration name="GraphsTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GraphsTest_dijkstra - 2019.05.25 at 17h 06m 31s.xml">
+      <configuration name="GraphsTest.dijkstra" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41656000" />
+    <option name="totallyTimeSpent" value="44656000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -513,19 +505,19 @@
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Designer" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2932761" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.2932761" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tool Output" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.325811" />
       <window_info anchor="bottom" id="Database Changes" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="5" weight="0.3258427" />
+      <window_info anchor="bottom" id="Version Control" order="5" weight="0.6713681" />
       <window_info anchor="bottom" id="ANTLR Preview" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32722145" />
       <window_info anchor="bottom" id="Message" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="bottom" id="Run" order="10" visible="true" weight="0.32440057" />
+      <window_info active="true" anchor="bottom" id="Run" order="10" visible="true" weight="0.32440057" />
       <window_info anchor="bottom" id="Debug" order="11" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="12" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="13" weight="0.4" />
@@ -603,7 +595,8 @@
     <MESSAGE value="resolve conflict" />
     <MESSAGE value="Merge branch 'master' of https://github.com/BenoitBonavia/esipe-a2-s2-algorithmie-avancee-projet&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="Optional astar. Main to run astar from args" />
-    <option name="LAST_COMMIT_MESSAGE" value="Optional astar. Main to run astar from args" />
+    <MESSAGE value="File de priorité." />
+    <option name="LAST_COMMIT_MESSAGE" value="File de priorité." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/fr/umlv/ir2/graphs/Graph.java" />
@@ -702,17 +695,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-          <folding>
-            <element signature="e#1988#1989#0" expanded="true" />
-            <element signature="e#2072#2073#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/util/PriorityQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4515">
@@ -804,24 +786,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/project/GraphsTest.java">
+    <entry file="file://$PROJECT_DIR$/src/project/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/project/Graphs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        <state relative-caret-position="185">
+          <caret line="29" column="73" lean-forward="true" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/project/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/project/ShortestPathFromOneVertex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="145">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#1988#1989#0" expanded="true" />
+            <element signature="e#2072#2073#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/project/GraphsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="82" column="57" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
         </state>
       </provider>
     </entry>

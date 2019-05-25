@@ -1,6 +1,7 @@
 package project;
 
 import java.util.*;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.logging.Logger;
 
 public class Graphs {
@@ -26,7 +27,7 @@ public class Graphs {
         while (!border.isEmpty()) { // tant qu'il y a des points a
             int x = border.remove().getSource();
             if (x == t) {
-                return Optional.of(new ShortestPathFromOneVertex(s, g, pi));
+                return Optional.of(new ShortestPathFromOneVertex(s, g, pi, 0));
             }
             if (x != -1) {
                 //Enleve x de border
@@ -70,6 +71,7 @@ public class Graphs {
     }
 
     public static ShortestPathFromOneVertex dijkstra(Graph g, int source) {
+        LongAdder longAdder = new LongAdder();
         ArrayList<Integer> vertices = new ArrayList<>();
         int[] d = new int[g.numberOfVertices()];
         int[] pi = new int[g.numberOfVertices()];
@@ -103,7 +105,7 @@ public class Graphs {
                 });
             }
         }
-        return new ShortestPathFromOneVertex(source, d, pi);
+        return new ShortestPathFromOneVertex(source, d, pi, 0);
     }
 
 }

@@ -1,20 +1,23 @@
 package project;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ShortestPathFromOneVertex {
     private final int source;
     private final int[] d;
     private final int[] pi;
+    private final int step;
 
-    ShortestPathFromOneVertex(int source, int[] d, int[] pi) {
+    ShortestPathFromOneVertex(int source, int[] d, int[] pi, int step) {
         this.source = source;
         this.d = d;
         this.pi = pi;
+        this.step = step;
+    }
+
+    public int distanceTo(int destination) {
+        return d[destination];
     }
 
     public void printShortestPathTo(int destination) {
@@ -40,6 +43,24 @@ public class ShortestPathFromOneVertex {
         printShortestPathToRec(pi[dest], ar);
     }
 
+    public List<Integer> shortestPathTo(int destination) {
+        ArrayList path = new ArrayList();
+        shortestPathToRec(destination, path);
+        return path;
+    }
+    public void shortestPathToRec(int destination, ArrayList<Integer> vertices) {
+        if(destination==-1) {
+            return;
+        }
+        if(vertices.isEmpty()) {
+            vertices.add(destination);
+        }
+        if(pi[destination] == source) {
+            return;
+        }
+        vertices.add(pi[destination]);
+    }
+
     public void printShortestPaths() {
         for (int i = 0; i < d.length; i++) {
             if (i == source) {
@@ -47,16 +68,6 @@ public class ShortestPathFromOneVertex {
             }
             printShortestPathTo(i);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ShortestPathFromOneVertex that = (ShortestPathFromOneVertex) o;
-        return source == that.source &&
-                Arrays.equals(d, that.d) &&
-                Arrays.equals(pi, that.pi);
     }
 
     @Override
