@@ -10,6 +10,7 @@ public class Graphs {
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
+        PriorityQueue<Node> border = new PriorityQueue<>(new Node.NodeComparator());
         int[] f = new int[graph.numberOfVertices()];
         int[] g = new int[graph.numberOfVertices()];
         int[] pi = new int[graph.numberOfVertices()];
@@ -19,26 +20,16 @@ public class Graphs {
         }
         f[s] = 0;
         g[s] = 0;
-        ArrayList<Integer> border = new ArrayList<>();
         ArrayList<Integer> computed = new ArrayList<>();
-        border.add(s);
+        border.add(new Node(s, Integer.MAX_VALUE));
         computed.add(s);
         while (!border.isEmpty()) { // tant qu'il y a des points a
-            int min = Integer.MAX_VALUE;
-            int x = -1;
-            //Extrait le min de border
-            for (int i : border) {
-                if (f[i] < min) {
-                    x = i;
-                    min = f[i];
-                }
-            }
+            int x = border.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi));
             }
             if (x != -1) {
                 //Enleve x de border
-                border.remove(border.indexOf(x));
                 final int fx = x;
                 graph.forEachEdge(x, edge -> {
                     int y = edge.getEnd();
@@ -49,7 +40,7 @@ public class Graphs {
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
                             if (!border.contains(y)) {
-                                border.add(y);
+                                border.add(new Node(y, g[y]));
                             }
                         }
                     } else {
@@ -57,7 +48,7 @@ public class Graphs {
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
-                        border.add(y);
+                        border.add(new Node(y, g[y]));
                         computed.add(y);
                     }
                 });

@@ -5,6 +5,7 @@ import project.*;
 
 import java.util.Iterator;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,6 +71,10 @@ class GraphsTest {
         NodeMap nodeMap = Parser.parseToCities("test");
 //        assertEquals(234, (int) Math.ceil(Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph)) * 1.6));
 //        assertEquals(234, (int) Math.ceil(Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)) * 1.6));
+        Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph)).get().printShortestPathTo(7);
+        Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)).get().printShortestPathTo(7);
+        System.out.println("Dijkstra");
+        Graphs.dijkstra(loadedGraph, 1).printShortestPathTo(7);
     }
 
     @Test
@@ -133,6 +138,27 @@ class GraphsTest {
             }
         }
         System.out.println(graph);
+    }
+
+    @Test
+    void queue() {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        queue.add(4);
+        queue.add(19);
+        queue.add(3);
+        queue.add(290);
+        queue.add(4);
+        queue.remove(4);
+        System.out.println(queue);
+    }
+
+    @Test
+    void node() {
+        PriorityQueue<Node> nodes = new PriorityQueue(new Node.NodeComparator());
+        nodes.add(new Node(1, 6));
+        nodes.add(new Node(4, 19));
+        Node node = nodes.remove();
+        assertEquals(node.getSource(), 1);
     }
 
 }
