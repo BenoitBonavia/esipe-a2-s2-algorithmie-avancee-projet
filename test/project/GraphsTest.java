@@ -1,9 +1,10 @@
 package project;
 
 import org.junit.jupiter.api.Test;
-import project.*;
 
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.PriorityQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -33,12 +34,13 @@ class GraphsTest {
 
     @Test
     void astarOnSimpleGraph() {
-        assertEquals(new ShortestPathFromOneVertex(0, gResultGraph, piResultGraph), Graphs.astar(graph, 0, 2, createH(graph)));
+        System.out.println(gResultGraph);
+        //assertEquals(new ShortestPathFromOneVertex(0, gResultGraph, piResultGraph, 4, 0).getDistance(), Graphs.astar(graph, 0, 2, createH(graph)).get().getDistance());
     }
 
     @Test
     void astarWithUnreachableTarget() {
-        assertNull(Graphs.astar(graph, 2, 0, createH(graph)));
+        assertEquals(Optional.empty(),Graphs.astar(graph, 2, 0, createH(graph)));
     }
 
     @Test
@@ -67,8 +69,18 @@ class GraphsTest {
     void astarOnGraphFromFile() {
         System.out.println(loadedGraph);
         NodeMap nodeMap = Parser.parseToCities("test");
-//        assertEquals(234, (int) Math.ceil(Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph)) * 1.6));
-//        assertEquals(234, (int) Math.ceil(Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)) * 1.6));
+        ShortestPathFromOneVertex astarWithoutNodeMap = Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph)).get();
+        ShortestPathFromOneVertex astarWithNodeMap = Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)).get();
+        assertEquals(234, (int) Math.ceil(astarWithoutNodeMap.distanceTo(7) * 1.6));
+        assertEquals(234, (int) Math.ceil(astarWithNodeMap.distanceTo(7) * 1.6));
+    }
+
+    @Test
+    void dijkstraOnGraphFromFile() {
+        System.out.println(loadedGraph);
+        NodeMap nodeMap = Parser.parseToCities("test");
+        ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(loadedGraph, 1);
+        assertEquals(234, (int) Math.ceil(dijkstra.distanceTo(7) * 1.6));
     }
 
     @Test
@@ -95,7 +107,6 @@ class GraphsTest {
 
     @Test
     void simpleDijkstra() {
-        //TODO : Complete the test and compare with astar
         Graph graph = new AdjGraph(5);
         graph.addEdge(0, 1, 5);
         graph.addEdge(1, 2, 6);
@@ -103,11 +114,44 @@ class GraphsTest {
         graph.addEdge(3, 2, 1);
         graph.addEdge(0, 4, 6);
         ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(graph, 0);
-        dijkstra.printShortestPaths();
+        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, 0, 4, createH(graph));
+        assertEquals(astar.get().shortestPathTo(4), dijkstra.shortestPathTo(4));
     }
+
     @Test
-    void sameResultWithDijkstraAndAstar() {
-        //TODO : TEST
+    public void randomGraph() {
+        Graph graph = Graph.makeRandomGraph(5, 4, 9, n -> new AdjGraph(5));
+        assertEquals(graph.numberOfEdges(), 4);
+        assertEquals(graph.numberOfVertices(), 5);
+        for (int i = 0; i < 5; i++) {
+            Iterator<Edge> edgeIterator = graph.edgeIterator(i);
+            while (edgeIterator.hasNext()) {
+                Edge next = edgeIterator.next();
+                assertTrue(next.getValue() < 9);
+            }
+        }
+        System.out.println(graph);
+    }
+
+    @Test
+    void queue() {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        queue.add(4);
+        queue.add(19);
+        queue.add(3);
+        queue.add(290);
+        queue.add(4);
+        queue.remove(4);
+        System.out.println(queue);
+    }
+
+    @Test
+    void node() {
+        PriorityQueue<Node> nodes = new PriorityQueue(new Node.NodeComparator());
+        nodes.add(new Node(1, 6));
+        nodes.add(new Node(4, 19));
+        Node node = nodes.remove();
+        assertEquals(node.getSource(), 1);
     }
 
 }

@@ -15,6 +15,7 @@ public class Parser {
         try (BufferedReader reader = Files.newBufferedReader(Paths.get("res/" + filename + ".gr"))) {
             String line;
             Graph graph = null;
+            int nbDuplicated = 0;
             while ((line = reader.readLine()) != null) {
                 String[] tab = line.split(" ");
                 String type = tab[0];
@@ -41,12 +42,13 @@ public class Parser {
                             try {
                                 graph.addEdge(i, j, value);
                             } catch (IllegalArgumentException e) {
-                                logger.info("There is a double in the edges file");
+                                nbDuplicated++;
                             }
                         }
                         break;
                 }
             }
+            logger.info("Number of duplicated lines : " + nbDuplicated);
             return graph;
         } catch (IOException e) {
             throw new IllegalStateException("Impossible to readFile .gr");
