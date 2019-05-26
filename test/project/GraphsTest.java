@@ -39,11 +39,6 @@ class GraphsTest {
     }
 
     @Test
-    void astarWithUnreachableTarget() {
-        //assertEquals(Optional.empty(),Graphs.astar(graph, 2, 0, createH(graph)));
-    }
-
-    @Test
     void astarWithNotExistingNode() {
         Graph graph = new AdjGraph(5);
         assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 0, 8, createH(graph)));

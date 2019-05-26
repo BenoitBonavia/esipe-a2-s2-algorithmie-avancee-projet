@@ -41,7 +41,7 @@ public class Graphs {
                     x = i;
                 }
             }
-            x=nodes.remove().getSource();
+            //x=nodes.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
             }
@@ -56,8 +56,9 @@ public class Graphs {
                             g[y] = g[fx] + value;
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
-                            nodes.removeIf(node -> node.getSource()==y);
-                            nodes.add(new Node(y, f[y]));
+                            /*boolean b = nodes.removeIf(node -> node.getSource() == y);
+                            System.out.println(b);
+                            nodes.add(new Node(y, f[y]));*/
                             if (!border.contains(y)) {
                                 border.add(y);
                             }
@@ -69,8 +70,9 @@ public class Graphs {
                         pi[y] = fx;
                         border.add(y);
                         computed.add(y);
-                        nodes.removeIf(node -> node.getSource()==y);
-                        nodes.add(new Node(y, f[y]));
+                        /*boolean b = nodes.removeIf(node -> node.getSource() == y);
+                        System.out.println(b);
+                        nodes.add(new Node(y, f[y]));*/
                     }
                 });
             }
@@ -82,12 +84,11 @@ public class Graphs {
         int[] h = new int[numberOfVertices];
         for (int i = 1; i < numberOfVertices; i++) {
             try {
-                h[i] = (int) Math.ceil(nodeMap.distance(source, i) * 1.6);
+                h[i - 1] = (int) Math.ceil(nodeMap.distance(source, i) * 1.6);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
         }
-        h[0]=-1;
         return h;
     }
 
