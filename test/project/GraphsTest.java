@@ -73,6 +73,8 @@ class GraphsTest {
         ShortestPathFromOneVertex astarWithNodeMap = Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)).get();
         assertEquals(234, (int) Math.ceil(astarWithoutNodeMap.distanceTo(7) * 1.6));
         assertEquals(234, (int) Math.ceil(astarWithNodeMap.distanceTo(7) * 1.6));
+        astarWithNodeMap.printShortestPathTo(7);
+        astarWithoutNodeMap.printShortestPathTo(7);
     }
 
     @Test
@@ -80,6 +82,7 @@ class GraphsTest {
         System.out.println(loadedGraph);
         NodeMap nodeMap = Parser.parseToCities("test");
         ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(loadedGraph, 1);
+        dijkstra.printShortestPathTo(7);
         assertEquals(234, (int) Math.ceil(dijkstra.distanceTo(7) * 1.6));
     }
 

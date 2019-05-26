@@ -26,8 +26,11 @@ public class Node {
                 return -1;
             } else if(o1.distance>o2.distance) {
                 return 1;
+            } else if(o1.source<o2.source) {
+                return -1;
+            } else{
+                return 1;
             }
-            return 0;
         }
     }
 

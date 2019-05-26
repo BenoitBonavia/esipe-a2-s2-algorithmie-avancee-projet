@@ -8,6 +8,8 @@ public class Graphs {
     private static Logger logger = Logger.getLogger(Graphs.class.getName());
 
     public static Optional<ShortestPathFromOneVertex> astar(Graph graph, int s, int t, int[] h) {
+        LongAdder longAdder = new LongAdder();
+        int step = 0;
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
@@ -18,16 +20,19 @@ public class Graphs {
         for (int i = 0; i < f.length; i++) {
             f[i] = Integer.MAX_VALUE;
             g[i] = Integer.MAX_VALUE;
+            pi[i] = -1;
         }
         f[s] = 0;
         g[s] = 0;
+        pi[s] = s;
         ArrayList<Integer> computed = new ArrayList<>();
         border.add(new Node(s, Integer.MAX_VALUE));
         computed.add(s);
-        while (!border.isEmpty()) { // tant qu'il y a des points a
+        while (!border.isEmpty()) { // tant qu'il y a des points a retirer
+            System.out.println(border);
             int x = border.remove().getSource();
             if (x == t) {
-                return Optional.of(new ShortestPathFromOneVertex(s, g, pi, 0));
+                return Optional.of(new ShortestPathFromOneVertex(s, g, pi, step));
             }
             if (x != -1) {
                 //Enleve x de border
@@ -54,6 +59,7 @@ public class Graphs {
                     }
                 });
             }
+            step++;
         }
         return Optional.empty();
     }
@@ -104,8 +110,9 @@ public class Graphs {
                     }
                 });
             }
+            longAdder.increment();
         }
-        return new ShortestPathFromOneVertex(source, d, pi, 0);
+        return new ShortestPathFromOneVertex(source, d, pi, longAdder.intValue());
     }
 
 }
