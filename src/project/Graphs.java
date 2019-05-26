@@ -9,7 +9,6 @@ public class Graphs {
 
     public static Optional<ShortestPathFromOneVertex> astar(Graph graph, int s, int t, int[] h) {
         LongAdder longAdder = new LongAdder();
-        int step = 0;
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
@@ -24,15 +23,18 @@ public class Graphs {
         }
         f[s] = 0;
         g[s] = 0;
+        h[s] = 0;
         pi[s] = s;
         ArrayList<Integer> computed = new ArrayList<>();
         border.add(new Node(s, Integer.MAX_VALUE));
         computed.add(s);
         while (!border.isEmpty()) { // tant qu'il y a des points a retirer
-            System.out.println(border);
-            int x = border.remove().getSource();
+            longAdder.increment();
+            Node node = border.remove();
+            System.out.println(node);
+            int x = node.getSource();
             if (x == t) {
-                return Optional.of(new ShortestPathFromOneVertex(s, g, pi, step));
+                return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
             }
             if (x != -1) {
                 //Enleve x de border
@@ -46,7 +48,7 @@ public class Graphs {
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
                             if (!border.contains(y)) {
-                                border.add(new Node(y, g[y]));
+                                border.add(new Node(y, f[y]));
                             }
                         }
                     } else {
@@ -54,12 +56,11 @@ public class Graphs {
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
-                        border.add(new Node(y, g[y]));
+                        border.add(new Node(y, f[y]));
                         computed.add(y);
                     }
                 });
             }
-            step++;
         }
         return Optional.empty();
     }
@@ -68,11 +69,12 @@ public class Graphs {
         int[] h = new int[numberOfVertices];
         for (int i = 1; i < numberOfVertices; i++) {
             try {
-                h[i - 1] = (int) Math.ceil(nodeMap.distance(source, i) * 1.6);
+                h[i] = (int) Math.ceil(nodeMap.distance(source, i) * 1.6);
             } catch (IllegalArgumentException e) {
                 e.printStackTrace();
             }
         }
+        h[0]=-1;
         return h;
     }
 
