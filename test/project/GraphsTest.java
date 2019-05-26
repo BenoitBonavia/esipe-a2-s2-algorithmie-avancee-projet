@@ -35,7 +35,7 @@ class GraphsTest {
     @Test
     void astarOnSimpleGraph() {
         System.out.println(gResultGraph);
-        //assertEquals(new ShortestPathFromOneVertex(0, gResultGraph, piResultGraph, 4, 0).getDistance(), Graphs.astar(graph, 0, 2, createH(graph)).get().getDistance());
+        //assertEquals(new ShortestPathFromOneVertex(0, gResultGraph, piResultGraph, 4).distanceTo(7), Graphs.astar(graph, 0, 2, createH(graph)).get().getDistance());
     }
 
     @Test
