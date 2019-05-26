@@ -12,7 +12,7 @@ public class Graphs {
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
         }
-        PriorityQueue<Node> border = new PriorityQueue<>(new Node.NodeComparator());
+        //PriorityQueue<Node> border = new PriorityQueue<>(new Node.NodeComparator());
         int[] f = new int[graph.numberOfVertices()];
         int[] g = new int[graph.numberOfVertices()];
         int[] pi = new int[graph.numberOfVertices()];
@@ -26,13 +26,22 @@ public class Graphs {
         h[s] = 0;
         pi[s] = s;
         ArrayList<Integer> computed = new ArrayList<>();
-        border.add(new Node(s, Integer.MAX_VALUE));
+        ArrayList<Integer> border = new ArrayList<>();
+        border.add(s);
         computed.add(s);
+        PriorityQueue<Node> nodes = new PriorityQueue<>(new Node.NodeComparator());
+        nodes.add(new Node(s, Integer.MAX_VALUE));
         while (!border.isEmpty()) { // tant qu'il y a des points a retirer
             longAdder.increment();
-            Node node = border.remove();
-            System.out.println(node);
-            int x = node.getSource();
+            int min = Integer.MAX_VALUE;
+            int x = -1;
+            //Extrait le min de border
+            for (int i : border) {
+                if (f[i] < min) {
+                    x = i;
+                }
+            }
+            x=nodes.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
             }
@@ -47,8 +56,10 @@ public class Graphs {
                             g[y] = g[fx] + value;
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
+                            nodes.removeIf(node -> node.getSource()==y);
+                            nodes.add(new Node(y, f[y]));
                             if (!border.contains(y)) {
-                                border.add(new Node(y, f[y]));
+                                border.add(y);
                             }
                         }
                     } else {
@@ -56,8 +67,10 @@ public class Graphs {
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
-                        border.add(new Node(y, f[y]));
+                        border.add(y);
                         computed.add(y);
+                        nodes.removeIf(node -> node.getSource()==y);
+                        nodes.add(new Node(y, f[y]));
                     }
                 });
             }
