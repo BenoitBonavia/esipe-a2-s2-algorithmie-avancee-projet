@@ -122,17 +122,5 @@ public interface Graph {
         return g;
     }
 
-    /**
-     * Création d'un graphe à partir d'un fichier contenant le nombre de sommets et sa matrice
-     *
-     * @param path    le chemin du fichier contenant la matrice du graphe
-     * @param factory une méthode qui étant donné un nombre de sommet n, fabrique et renvoie yun graphe vide à n sommet
-     * @return un graphe construit à l'aide de factory et dont les arêtes sont données dans le fihier indiqué dans path
-     * @throws IOException
-     */
-    public static Graph makeGraphFromMatrixFile(Path path, IntFunction<Graph> factory) throws IOException {
-        return null; // TODO à implémenter
-    }
-
     public Graph newGraphOfSameSize();
 }

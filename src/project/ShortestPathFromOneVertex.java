@@ -27,6 +27,7 @@ public class ShortestPathFromOneVertex {
         Collections.reverse(ar);
         System.out.println("Go from " + source + " to " + destination);
         System.out.println(ar.stream().map(Object::toString).collect(Collectors.joining("->")));
+        System.out.println("Nombre d'étape : " + step);
     }
 
     private void printShortestPathToRec(int dest, ArrayList<Integer> ar) {
@@ -40,6 +41,10 @@ public class ShortestPathFromOneVertex {
             return;
         }
         ar.add(pi[dest]);
+        //System.out.println(pi[dest]);
+        if(pi[dest] == -1) {
+            return;
+        }
         printShortestPathToRec(pi[dest], ar);
     }
 
