@@ -26,8 +26,6 @@ public class Graphs {
         h[s] = 0;
         pi[s] = s;
         ArrayList<Integer> computed = new ArrayList<>();
-        ArrayList<Integer> border = new ArrayList<>();
-        border.add(s);
         computed.add(s);
         PriorityQueue<Node> nodes = new PriorityQueue<>(new Node.NodeComparator());
         nodes.add(new Node(s, Integer.MAX_VALUE));
@@ -36,11 +34,6 @@ public class Graphs {
             int min = Integer.MAX_VALUE;
             int x = -1;
             //Extrait le min de border
-            /*for (int i : border) {
-                if (f[i] < min) {
-                    x = i;
-                }
-            }*/
             x=nodes.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
@@ -56,11 +49,12 @@ public class Graphs {
                             g[y] = g[fx] + value;
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
-                            nodes.removeIf(node -> node.getSource() == y);
-                            nodes.add(new Node(y, f[y]));
-                            if (!border.contains(y)) {
-                                border.add(y);
+                            //nodes.removeIf(node -> node.getSource() == y);
+                            Node node = new Node(y, f[y]);
+                            if(nodes.contains(node)) {
+                                nodes.remove(node);
                             }
+                            nodes.add(node);
                         }
                     } else {
                         if(nodeMap!=null) {
@@ -70,9 +64,8 @@ public class Graphs {
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
-                        border.add(y);
                         computed.add(y);
-                        nodes.removeIf(node -> node.getSource() == y);
+                        //nodes.removeIf(node -> node.getSource() == y);
                         nodes.add(new Node(y, f[y]));
                     }
                 });
