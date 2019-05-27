@@ -31,46 +31,44 @@ public class Graphs {
         nodes.add(new Node(s, Integer.MAX_VALUE));
         while (!nodes.isEmpty()) { // tant qu'il y a des points a retirer
             longAdder.increment();
-            int min = Integer.MAX_VALUE;
             int x = -1;
             //Extrait le min de border
             x=nodes.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
             }
-            if (x != -1) {
-                //Enleve x de border
-                final int fx = x;
-                graph.forEachEdge(x, edge -> {
-                    int y = edge.getEnd();
-                    if (computed.contains(y)) {
-                        int value = edge.getValue();
-                        if (g[y] > g[fx] + value) {
-                            g[y] = g[fx] + value;
-                            f[y] = g[y] + h[y];
-                            pi[y] = fx;
-                            //nodes.removeIf(node -> node.getSource() == y);
-                            Node node = new Node(y, f[y]);
-                            if(nodes.contains(node)) {
-                                nodes.remove(node);
-                            }
-                            nodes.add(node);
-                        }
-                    } else {
-                        if(nodeMap!=null) {
-                            h[y] = nodeMap.distance(y, t);
-                        }
-                        int value = edge.getValue();
+            //Enleve x de border
+            final int fx = x;
+            graph.forEachEdge(x, edge -> {
+                int y = edge.getEnd();
+                if (computed.contains(y)) {
+                    int value = edge.getValue();
+                    if (g[y] > g[fx] + value) {
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
-                        computed.add(y);
                         //nodes.removeIf(node -> node.getSource() == y);
-                        nodes.add(new Node(y, f[y]));
+                        Node node = new Node(y, f[y]);
+                        if(nodes.contains(node)) {
+                            nodes.remove(node);
+                        }
+                        nodes.add(node);
                     }
-                });
-            }
+                } else {
+                    if(nodeMap!=null) {
+                        h[y] = nodeMap.distance(y, t);
+                    }
+                    int value = edge.getValue();
+                    g[y] = g[fx] + value;
+                    f[y] = g[y] + h[y];
+                    pi[y] = fx;
+                    computed.add(y);
+                    //nodes.removeIf(node -> node.getSource() == y);
+                    nodes.add(new Node(y, f[y]));
+                }
+            });
         }
+
         return Optional.empty();
     }
 
