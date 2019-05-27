@@ -28,6 +28,7 @@ public class ShortestPathFromOneVertex {
         System.out.println("Go from " + source + " to " + destination);
         System.out.println(ar.stream().map(Object::toString).collect(Collectors.joining("->")));
         System.out.println("Nombre d'étape : " + step);
+        System.out.println("Distance " + ((int)Math.ceil(distanceTo(destination)*1.6)));
     }
 
     private void printShortestPathToRec(int dest, ArrayList<Integer> ar) {

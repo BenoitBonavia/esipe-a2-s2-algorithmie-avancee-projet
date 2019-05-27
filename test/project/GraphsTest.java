@@ -39,16 +39,11 @@ class GraphsTest {
     }
 
     @Test
-    void astarWithUnreachableTarget() {
-        assertEquals(Optional.empty(),Graphs.astar(graph, 2, 0, createH(graph)));
-    }
-
-    @Test
     void astarWithNotExistingNode() {
         Graph graph = new AdjGraph(5);
-        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 0, 8, createH(graph)));
-        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 8, 8, createH(graph)));
-        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 8, 0, createH(graph)));
+        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 0, 8, createH(graph),null));
+        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 8, 8, createH(graph),null));
+        assertThrows(IllegalArgumentException.class, () -> Graphs.astar(graph, 8, 0, createH(graph),null));
     }
 
     @Test
@@ -69,8 +64,8 @@ class GraphsTest {
     void astarOnGraphFromFile() {
         System.out.println(loadedGraph);
         NodeMap nodeMap = Parser.parseToCities("test");
-        ShortestPathFromOneVertex astarWithoutNodeMap = Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph)).get();
-        ShortestPathFromOneVertex astarWithNodeMap = Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap)).get();
+        ShortestPathFromOneVertex astarWithoutNodeMap = Graphs.astar(loadedGraph, 1, 7, createH(loadedGraph), nodeMap).get();
+        ShortestPathFromOneVertex astarWithNodeMap = Graphs.astar(loadedGraph, 1, 7, Graphs.getH(loadedGraph.numberOfVertices(), 1, nodeMap), nodeMap).get();
         assertEquals(234, (int) Math.ceil(astarWithoutNodeMap.distanceTo(7) * 1.6));
         assertEquals(234, (int) Math.ceil(astarWithNodeMap.distanceTo(7) * 1.6));
         astarWithNodeMap.printShortestPathTo(7);
@@ -117,23 +112,8 @@ class GraphsTest {
         graph.addEdge(3, 2, 1);
         graph.addEdge(0, 4, 6);
         ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(graph, 0);
-        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, 0, 4, createH(graph));
+        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, 0, 4, createH(graph), null);
         assertEquals(astar.get().shortestPathTo(4), dijkstra.shortestPathTo(4));
-    }
-
-    @Test
-    public void randomGraph() {
-        Graph graph = Graph.makeRandomGraph(5, 4, 9, n -> new AdjGraph(5));
-        assertEquals(graph.numberOfEdges(), 4);
-        assertEquals(graph.numberOfVertices(), 5);
-        for (int i = 0; i < 5; i++) {
-            Iterator<Edge> edgeIterator = graph.edgeIterator(i);
-            while (edgeIterator.hasNext()) {
-                Edge next = edgeIterator.next();
-                assertTrue(next.getValue() < 9);
-            }
-        }
-        System.out.println(graph);
     }
 
     @Test
@@ -156,5 +136,6 @@ class GraphsTest {
         Node node = nodes.remove();
         assertEquals(node.getSource(), 1);
     }
+
 
 }
