@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public class Graphs {
     private static Logger logger = Logger.getLogger(Graphs.class.getName());
 
-    public static Optional<ShortestPathFromOneVertex> astar(Graph graph, int s, int t, int[] h) {
+    public static Optional<ShortestPathFromOneVertex> astar(Graph graph, int s, int t, int[] h, NodeMap nodeMap) {
         LongAdder longAdder = new LongAdder();
         if (s < 0 || s >= graph.numberOfVertices() || t < 0 || t >= graph.numberOfVertices()) {
             throw new IllegalArgumentException("The source vertice or target vertice doesn't exist");
@@ -31,17 +31,17 @@ public class Graphs {
         computed.add(s);
         PriorityQueue<Node> nodes = new PriorityQueue<>(new Node.NodeComparator());
         nodes.add(new Node(s, Integer.MAX_VALUE));
-        while (!border.isEmpty()) { // tant qu'il y a des points a retirer
+        while (!nodes.isEmpty()) { // tant qu'il y a des points a retirer
             longAdder.increment();
             int min = Integer.MAX_VALUE;
             int x = -1;
             //Extrait le min de border
-            for (int i : border) {
+            /*for (int i : border) {
                 if (f[i] < min) {
                     x = i;
                 }
-            }
-            //x=nodes.remove().getSource();
+            }*/
+            x=nodes.remove().getSource();
             if (x == t) {
                 return Optional.of(new ShortestPathFromOneVertex(s, g, pi, longAdder.intValue()));
             }
@@ -56,23 +56,24 @@ public class Graphs {
                             g[y] = g[fx] + value;
                             f[y] = g[y] + h[y];
                             pi[y] = fx;
-                            /*boolean b = nodes.removeIf(node -> node.getSource() == y);
-                            System.out.println(b);
-                            nodes.add(new Node(y, f[y]));*/
+                            nodes.removeIf(node -> node.getSource() == y);
+                            nodes.add(new Node(y, f[y]));
                             if (!border.contains(y)) {
                                 border.add(y);
                             }
                         }
                     } else {
+                        if(nodeMap!=null) {
+                            h[y] = nodeMap.distance(y, t);
+                        }
                         int value = edge.getValue();
                         g[y] = g[fx] + value;
                         f[y] = g[y] + h[y];
                         pi[y] = fx;
                         border.add(y);
                         computed.add(y);
-                        /*boolean b = nodes.removeIf(node -> node.getSource() == y);
-                        System.out.println(b);
-                        nodes.add(new Node(y, f[y]));*/
+                        nodes.removeIf(node -> node.getSource() == y);
+                        nodes.add(new Node(y, f[y]));
                     }
                 });
             }

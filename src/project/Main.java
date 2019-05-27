@@ -10,7 +10,7 @@ public class Main {
         //System.out.println(nodeMap);
         int source = Integer.parseInt(args[1]);
         int dest = Integer.parseInt(args[2]);
-        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, source, dest, Graphs.getH(graph.numberOfVertices(), source, nodeMap));
+        Optional<ShortestPathFromOneVertex> astar = Graphs.astar(graph, source, dest, Graphs.getH(graph.numberOfVertices(), source, nodeMap), nodeMap);
         astar.ifPresent(shortestPathFromOneVertex -> shortestPathFromOneVertex.printShortestPathTo(dest));
         System.out.println("==============");
         ShortestPathFromOneVertex dijkstra = Graphs.dijkstra(graph, source);
